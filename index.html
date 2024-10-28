@@ -12,8 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <style>
-
-    .loading{
+    .loading {
         width: 6rem;
     }
 </style>
@@ -44,7 +43,7 @@
         <section class="container  mx-auto my-10">
             <h3 class="text-5xl text-center font-bold">Display All Phones</h3>
             <div class="flex justify-between items-center gap-5 mt-10 rounded-lg bg-slate-400 p-10">
-                <input id="search-field" type="text" placeholder="Type here" class="input input-bordered w-[80%]" />
+                <input id="search-field" type="text" placeholder="Enter Phone Name : iphone, samsung, oppo" class="input input-bordered w-[80%]" />
                 <button onclick="searchResult()" class="btn btn-primary w-[20%]">Search</button>
             </div>
         </section>
@@ -61,6 +60,21 @@
                 <button onclick="showAllButton()" class="btn btn-primary">Show All</button>
             </div>
         </section>
+        <!-- Modal -->
+
+        <!-- Open the modal using ID.showModal() method -->
+        <dialog id="show_all_modal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box lg:w-7/12 lg:max-w-5xl">
+                <div id="phone-details-container" class="place-content-center">
+                </div>
+                <div class="modal-action">
+                    <form method="dialog" class="w-full">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary w-full">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </main>
     <script src="./js/scripts.js"></script>
 </body>
