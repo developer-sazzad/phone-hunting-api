@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Hunting</title>
+
+
+    <!-- DaisyUI and tailwinds -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+
+    .loading{
+        width: 6rem;
+    }
+</style>
+
+<body>
+    <header class="bg-[#0D6EFD0D]">
+        <div>
+            <div class="container mx-auto navbar space-y-5">
+                <div class="flex-1">
+                    <a class="text-3xl font-bold">Hot Gadgets</a>
+                </div>
+                <div class="flex-none">
+                    <button class="btn text-white hover:bg-black bg-[#0D6EFD]">Sing Up</button>
+                </div>
+            </div>
+
+            <div class="h-[400px] place-content-center space-y-10 text-center">
+                <h2 class="text-5xl font-bold">Apple Iphone 13 Pro Max</h2>
+                <p class="w-7/12 mx-auto">There are many variations of passages of Lorem Ipsum available, but the
+                    majority have suffered
+                    alteration in some form, by injected humou.</p>
+                <button class="btn text-white hover:bg-black bg-[#0D6EFD]">Buy Now</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="container  mx-auto my-10">
+            <h3 class="text-5xl text-center font-bold">Display All Phones</h3>
+            <div class="flex justify-between items-center gap-5 mt-10 rounded-lg bg-slate-400 p-10">
+                <input id="search-field" type="text" placeholder="Type here" class="input input-bordered w-[80%]" />
+                <button onclick="searchResult()" class="btn btn-primary w-[20%]">Search</button>
+            </div>
+        </section>
+        <section class="container mx-auto my-10">
+
+            <!-- Loading Spinner -->
+            <div id="loading-spinner" class="text-center my-32 hidden">
+                <span class="loading loading-dots text-primary"></span>
+            </div>
+            <div id="phone-container" class="my-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            </div>
+
+            <div id="show-all-phones" class="my-10 text-center hidden">
+                <button class="btn btn-primary">Show All</button>
+            </div>
+        </section>
+    </main>
+    <script src="./js/scripts.js"></script>
+</body>
+
+</html>
