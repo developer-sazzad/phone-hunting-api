@@ -1,29 +1,33 @@
-const loadPhone = async (searchField) => {
+const loadPhone = async (searchField, isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchField}`);
     const data = await res.json();
     const phones = data.data;
-    displayPhones(phones)
+    displayPhones(phones, isShowAll)
 }
-const displayPhones = phones => {
+const displayPhones = (phones, isShowAll) => {
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.innerHTML = '';
 
     // Show All buttons Display
     const showAllPhones = document.getElementById('show-all-phones');
 
-    if(phones.length > 9){
+    if(phones.length > 9 && !isShowAll){
         showAllPhones.classList.remove('hidden');
     }
     else{
         showAllPhones.classList.add('hidden');
     }
 
+    // console.log('Is show All ', isShowAll)
     // display Only 9 Phones
-    phones = phones.slice(0, 9);
+    if(!isShowAll){
+        phones = phones.slice(0, 9);
+    }
 
 
 
     phones.forEach(phone => {
+        // console.log(phone.slug)
         const phoneCard = document.createElement('div');
         phoneCard.classList = `card bg-base-100 shadow-xl`;
         phoneCard.innerHTML = `
@@ -34,7 +38,7 @@ const displayPhones = phones => {
              <h2 class="card-title">${phone.phone_name}</h2>
              <p>${phone.brand}</p>
              <div class="card-actions justify-center">
-                <button class="btn btn-primary w-full">Buy Now</button>
+                <button onclick="showDetails('${phone.phone_name}')" class="btn btn-primary w-full">Show All Details</button>
              </div>
         </div>
         `;
@@ -44,11 +48,15 @@ const displayPhones = phones => {
     });
 };
 
-const searchResult = () =>{
+const showDetails = (id) =>{
+    console.log('Clicked', id)
+}
+
+const searchResult = (isShowAll) =>{
     loadingSpinner(true);
     const searchField = document.getElementById('search-field').value;
     // console.log(searchField);
-    loadPhone(searchField);
+    loadPhone(searchField, isShowAll);
 };
 
 
@@ -60,4 +68,11 @@ const loadingSpinner = (isLoading) => {
     else{
         loadingSpinnerBox.classList.add('hidden');
     }
+};
+
+const showAllButton = () =>{
+    searchResult(true)
 }
+
+
+// loadPhone();
